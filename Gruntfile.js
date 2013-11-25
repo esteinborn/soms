@@ -23,20 +23,6 @@ module.exports = function(grunt) {
           }
         }
       },
-      dist_docs: {
-        options: {
-          flatten: false,
-          assets: 'dist/docs/assets',
-          data: ['doc/data/*.json'],
-          partials: ['doc/includes/**/*.{html,scss}'],
-          helpers: ['doc/helpers/*.js'],
-          layout: 'doc/layouts/default.html'
-        },
-        expand: true,
-        cwd: 'doc/pages',
-        src: '**/*.{html,md}',
-        dest: 'dist/docs/'
-      },
       dist_download: {
         options: {
           assets: 'dist/assets'
@@ -54,7 +40,6 @@ module.exports = function(grunt) {
         files: {
           'dist/assets/css/foundation.css': '<%= foundation.scss %>',
           'dist/assets/css/normalize.css': 'scss/normalize.scss',
-          'dist/docs/assets/css/docs.css': 'doc/assets/scss/docs.scss',
           'dist/assets/css/app.css': 'scss/app.scss'
         }
       },
@@ -81,7 +66,6 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'dist/assets/js/foundation.min.js': ['<%= foundation.js %>'],
-          'dist/docs/assets/js/all.js': ['js/vendor/fastclick.js', 'js/vendor/jquery.autocomplete.js', '<%= foundation.js %>', 'doc/assets/js/docs.js']
         }
       }
     },
@@ -89,9 +73,7 @@ module.exports = function(grunt) {
     copy: {
       dist: {
         files: [
-          {cwd: 'doc/assets/', expand:true, filter: 'isFile', src: 'img/**/*', dest: 'dist/docs/assets/'},
           {cwd: 'js/', expand:true, filter: 'isFile', src: ['{foundation,vendor}/**/*.js'], dest: 'dist/assets/js'},
-          {cwd: 'js/vendor/', expand:true, filter: 'isFile', src: ['**/*.js'], dest: 'dist/docs/assets/js/'},
           {cwd: 'scss/', expand:true, filter: 'isFile', src: '**/*.scss', dest: 'dist/assets/scss/'},
           {src: 'bower.json', dest: 'dist/assets/'}
         ]
@@ -151,19 +133,9 @@ module.exports = function(grunt) {
         tasks: ['copy', 'concat', 'uglify'],
         options: {livereload:true}
       },
-      dist_docs: {
-        files: ['doc/{includes,layouts,pages}/**/*.html'],
-        tasks: ['assemble'],
-        options: {livereload:true}
-      },
       dist_download: {
         files: ['index.html'],
         tasks: ['assemble:dist_download']
-      },
-      assets: {
-        files: ['doc/assets/{img}/**/*'],
-        tasks: ['copy'],
-        options: {livereload:true}
       }
     },
 
@@ -176,19 +148,7 @@ module.exports = function(grunt) {
           {expand: true, cwd: 'dist/assets/', src: ['**'], dest: 'foundation/'}
         ]
       }
-    },
-
-    // rsync: {
-    //   dist: {
-    //     options: {
-    //       args: ["--verbose"],
-    //       src: "./dist/docs/",
-    //       recursive: true,
-    //       dest: "/home/deployer/sites/foundation-docs/current",
-    //       host: "deployer@foundation5.zurb.com"
-    //     }
-    //   }
-    // }
+    }
 
   });
 
