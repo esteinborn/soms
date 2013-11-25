@@ -1,3 +1,28 @@
-// Make sure the charset is set appropriately
-@charset "UTF-8";
+@import "foundation/components/global";
 
+    h1 { font-size: rem-calc(22) ;}
+    h2 { font-size: rem-calc(20) ;}
+    h3 { font-size: rem-calc(19) ;}
+    h4 { font-size: rem-calc(18) ;}
+    h5 { font-size: rem-calc(17) ;}
+    h6 { font-size: 1rem ;}
+
+.clear-icon {
+  padding-top: 0.5em;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+.offender-list {
+  p {
+    margin: 0;
+    border-top: 1px solid #CCC;
+    border-bottom: 1px solid #999;
+  }
+
+  a {
+    display: block;
+    padding: 1em 0 1em 0.5em;
+  }
+
+}

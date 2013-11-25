@@ -12,17 +12,24 @@
   <body>
     <div class="row">
       <div class="large-12 columns">
+        <h1>Sex Offender Registry Search</h1>
+      </div>
+    </div>
         <form>
-          <fieldset>
-            <legend>Search by one field only</legend>
             <div class="row">
               <div class="large-3 small-5 columns">
                 <label>Zip Code</label>
                 <input type="text" />
               </div>
+              <div class="large-1 small-1 columns">
+                <p class="clear-icon"><i class="fi-x-circle"></i></p>
+              </div>
+              <div class="large-8 small-6 columns">
+
+              </div>
             </div>
             <div class="row">
-              <div class="large-12 columns">
+              <div class="large-10 small-10 columns">
                 <label>County</label>
                 <select name="County" id="County">
                   <option value="" selected="selected"></option>
@@ -93,23 +100,61 @@
                   <option value="64">Out of Country</option>
                 </select>
               </div>
+              <div class="large-2 small-2 columns">
+                <p class="clear-icon"><i class="fi-x-circle"></i></p>
+              </div>
             </div>
             <div class="row">
-              <div class="large-12 columns">
+              <div class="large-10 small-10 columns">
                 <label>Last Name</label>
                 <input type="text" />
               </div>
-            </div>
-
-            <div class="row">
-              <div class="large-12 columns">
-            <p><a href="#" class="button right">Search <i class="fi-play"></i></a></p>
+              <div class="large-2 small-2 columns">
+                <p class="clear-icon"><i class="fi-x-circle"></i></p>
               </div>
             </div>
-          </fieldset>
+            <div class="row">
+              <div class="large-10 small-11 columns">
+                <p><a href="#" class="button right">Search <i class="fi-play"></i></a></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="small-12 medium-12 large-12 columns">
+                <p>By clicking "Search" you acknowledge that you have read the disclaimer  below.</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="small-12 medium-12 large-12 columns">
+                <p><b>The Sex Offender Registry now posts multiple photos of registered sex offenders, as they become available, to provide New Yorkers with additional information to keep their families safe. The Registry also includes multiple names (aliases) and multiple home and/or work addresses in an offender's profile, if applicable.</b></p>
+                <p><b>By law, only information about Level 2 and Level 3 offenders is available via this public directory.</b></p>
+              </div>
+            </div>
         </form>
-      </div>
-    </div>
+<div class="row">
+  <div class="columns large-12">
+    <h2>Results of your Search</h2>
+    <h3>Offender Name:</h3>
+  </div>
+</div>
+<div class="row offender-list">
+  <div class="columns large-12">
+    <p><a href="#">ABDUL, NUR</a></p>
+    <p><a href="#">ACEVIDO, JAIME</a></p>
+    <p><a href="#">ADAMS, TONY</a></p>
+    <p><a href="#">ADAMS, TONY</a></p>
+    <p><a href="#">ADDISON, RODNEY</a></p>
+    <p><a href="#">ADLER, HALE</a></p>
+    <p><a href="#">ADLER, HALE</a></p>
+    <p><a href="#">AGRUSTI, FRANCIS</a></p>
+    <p><a href="#">AGRUSTI, FRANK</a></p>
+    <p><a href="#">AIETA, ROCCO</a></p>
+    <p><a href="#">AIETA, ROCCO</a></p>
+    <p><a href="#">AIETA, ROCCO</a></p>
+    <p><a href="#">ALLEN, ELOIYO</a></p>
+    <p><a href="#">ALLEN, ELOIYO</a></p>
+  </div>
+</div>
+
     <script src="assets/js/vendor/jquery.js"></script>
     <script>
     $.getScript("assets/js/foundation.js", function(){
