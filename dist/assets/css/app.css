@@ -164,3 +164,19 @@ h6 {
 .offender-list a {
   display: block;
   padding: 1em 0 1em 0.5em; }
+
+/* line 31, C:\wamp\www\soms/scss/app.scss */
+dt, dd {
+  display: inline-block;
+  vertical-align: top; }
+
+/* line 35, C:\wamp\www\soms/scss/app.scss */
+dt {
+  width: 25%;
+  padding-right: 1%;
+  text-align: right; }
+
+/* line 40, C:\wamp\www\soms/scss/app.scss */
+dd {
+  width: 72%;
+  padding-left: 1%; }

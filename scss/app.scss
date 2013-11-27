@@ -26,3 +26,18 @@
   }
 
 }
+
+dt,
+dd {
+  display: inline-block;
+  vertical-align: top;
+}
+dt {
+  width: 25%;
+  padding-right: 1%;
+  text-align: right;
+}
+dd {
+  width: 72%;
+  padding-left: 1%;
+}
