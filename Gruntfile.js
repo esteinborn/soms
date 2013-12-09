@@ -10,28 +10,6 @@ module.exports = function(grunt) {
       scss: ['scss/foundation.scss']
     },
 
-    // assemble: {
-    //   options: {
-    //     marked: {
-    //       gfm: true,
-    //       sanitize: false,
-    //       highlight: function(code, lang) {
-    //         if (lang === undefined) lang = 'bash';
-    //         if (lang === 'html') lang = 'xml';
-    //         if (lang === 'js') lang = 'javascript';
-    //         return '<div class="code-container">' + hljs.highlight(lang, code).value + '</div>';
-    //       }
-    //     }
-    //   },
-    //   dist_download: {
-    //     options: {
-    //       assets: 'dist/assets'
-    //     },
-    //     src: 'index.html',
-    //     dest: 'dist/index.html'
-    //   }
-    // },
-
     sass: {
       dist: {
         options: {
@@ -67,6 +45,7 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'dist/assets/js/foundation.min.js': ['<%= foundation.js %>'],
+          'dist/assets/js/app/app.js': 'js/app/app.js'
         }
       }
     },
@@ -74,57 +53,18 @@ module.exports = function(grunt) {
     copy: {
       dist: {
         files: [
-          {cwd: 'js/', expand:true, filter: 'isFile', src: ['{foundation,vendor}/**/*.js'], dest: 'dist/assets/js'},
+          {cwd: 'js/', expand:true, filter: 'isFile', src: ['{foundation,vendor,app}/**/*.js'], dest: 'dist/assets/js'},
           {cwd: 'scss/', expand:true, filter: 'isFile', src: '**/*.scss', dest: 'dist/assets/scss/'},
+          {cwd: 'img/', expand:true, filter: 'isFile', src: '**/*', dest: 'dist/assets/img/'},
           {cwd: 'scss/foundation/components/fonts', expand:true, filter: 'isFile', src: '**/*', dest: 'dist/assets/css/fonts'}
-          // ,
-          // {src: 'bower.json', dest: 'dist/assets/'}
         ]
       }
     },
 
     clean: ['dist/assets'],
 
-    // karma: {
-    //   options: {
-    //     configFile: 'karma.conf.js',
-    //     runnerPort: 9999,
-    //   },
-    //   continuous: {
-    //     singleRun: true,
-    //     browsers: ['TinyPhantomJS', 'SmallPhantomJS']
-    //   },
-    //   dev: {
-    //     singleRun: true,
-    //     browsers: ['TinyPhantomJS', 'SmallPhantomJS', 'TinyChrome', 'Firefox'],
-    //     reporters: 'dots'
-    //   },
-    //   dev_watch: {
-    //     background: true,
-    //     browsers: ['TinyPhantomJS', 'SmallPhantomJS', 'TinyChrome', 'Firefox']
-    //   },
-    //   mac: {
-    //     singleRun: true,
-    //     browsers: ['TinyPhantomJS', 'SmallPhantomJS', 'TinyChrome', 'Firefox', 'Safari'],
-    //     reporters: 'dots'
-    //   },
-    //   win: {
-    //     singleRun: true,
-    //     browsers: ['TinyPhantomJS', 'SmallPhantomJS', 'TinyChrome', 'Firefox', 'IE'],
-    //     reporters: 'dots'
-    //   }
-    // },
 
     watch_start: {
-      // grunt: { files: ['Gruntfile.js'] },
-      // karma: {
-      //   files: [
-      //     'dist/assets/js/*.js',
-      //     'spec/**/*.js',
-      //     'dist/assets/css/*.css'
-      //   ],
-      //   tasks: ['karma:dev_watch:run']
-      // },
 
       styles: {
         files: ['scss/**/*.scss', 'doc/assets/**/*.scss'],
@@ -132,27 +72,12 @@ module.exports = function(grunt) {
         options: {livereload:true}
       },
       js: {
-        files: ['js/**/*.js', 'doc/assets/js/**/*.js'],
+        files: ['js/**/*.js'],
         tasks: ['copy', 'concat', 'uglify'],
         options: {livereload:true}
       }
-      // ,
-      // dist_download: {
-      //   files: ['index.html'],
-      //   tasks: ['assemble:dist_download']
-      // }
     },
 
-    // compress: {
-    //   dist: {
-    //     options: {
-    //       archive: 'dist/foundation.tar.gz'
-    //     },
-    //     files: [
-    //       {expand: true, cwd: 'dist/assets/', src: ['**'], dest: 'foundation/'}
-    //     ]
-    //   }
-    // }
 
   });
 
@@ -162,10 +87,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-clean');
-  // grunt.loadNpmTasks('grunt-contrib-compress');
-  // grunt.loadNpmTasks('grunt-karma');
-  // grunt.loadNpmTasks('grunt-rsync');
-  // grunt.loadNpmTasks('assemble');
   grunt.loadNpmTasks('grunt-newer');
 
   grunt.task.renameTask('watch', 'watch_start');
@@ -174,6 +95,4 @@ module.exports = function(grunt) {
   grunt.registerTask('compile', ['clean', 'sass', 'concat', 'uglify', 'copy']);
   grunt.registerTask('build', ['compile', 'compress']);
   grunt.registerTask('default', ['compile', 'watch']);
-  // grunt.registerTask('travis', ['compile', 'karma:continuous']);
-  // grunt.registerTask('deploy', ['compile', 'rsync:dist']);
 };
