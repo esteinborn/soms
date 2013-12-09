@@ -17,18 +17,16 @@
     </div>
     <div class="row">
       <div class="columns large-12">
-        <h3><i class="fi-plus"></i> <i class="fi-minus"></i> Search By: [[Search Criteria]]</h3>
-      </div>
-      <div class="columns large-12" id="search-form">
-        <form id="searchForm" action="#" method="post">
+        <h3 class="panelTrigger searchTrigger plusToggle openPanel" data-panel="search"><i class="fi-plus hide"></i> <i class="fi-minus"></i> Search By: [[Search Criteria]]</h3>
+        <form id="searchForm" class="search" action="#" method="post">
           <div class="row">
             <div class="large-3 small-10 columns">
               <label for="zip">Zip Code</label>
               <input id="zip" class="zip" type="text">
-              <small class="error hide">Please only fill one field.</small>
+              <small class="error hide">Please fill <span class="multiValid hide">only </span><span class="noValid hide">at least </span> one field.</small>
             </div>
             <div class="large-1 small-2 columns">
-              <p class="clear-icon"><a href="#" class="clear-field"><i class="fi-x-circle"></i></a></p>
+              <p class="clear-icon"><a href="#" class="clear-field hide"><i class="fi-x-circle"></i></a></p>
             </div>
             <div class="large-8 small-6 columns">
             </div>
@@ -104,20 +102,20 @@
                 <option value="99">Unknown</option>
                 <option value="64">Out of Country</option>
               </select>
-              <small class="error hide">Please only fill one field.</small>
+              <small class="error hide">Please fill <span class="multiValid hide">only </span><span class="noValid hide">at least </span> one field.</small>
             </div>
             <div class="large-2 small-2 columns">
-              <p class="clear-icon"><a href="#" class="clear-field"><i class="fi-x-circle"></i></a></p>
+              <p class="clear-icon"><a href="#" class="clear-field hide"><i class="fi-x-circle"></i></a></p>
             </div>
           </div>
           <div class="row">
             <div class="large-10 small-10 columns">
               <label for="lastName">Last Name</label>
               <input type="text" name="lastName" class="lastName">
-              <small class="error hide">Please only fill one field.</small>
+              <small class="error hide">Please fill <span class="multiValid hide">only </span><span class="noValid hide">at least </span> one field.</small>
             </div>
             <div class="large-2 small-2 columns">
-              <p class="clear-icon"><a href="#" class="clear-field"><i class="fi-x-circle"></i></a></p>
+              <p class="clear-icon"><a href="#" class="clear-field hide"><i class="fi-x-circle"></i></a></p>
             </div>
           </div>
           <div class="row">
@@ -338,20 +336,20 @@
         numValid = 0,
         noValid = true;
 
-    // hideTips();
+    $('.columns > .error, .clear-field').addClass('hide');
+    $('.columns.error').removeClass('error');
+    $('.noValid, .multiValid').removeClass('hide');
 
     $fields.each(function(){
       var $this = $(this);
 
       if ($this.val()){
-        console.log("numvalid less than 1 and this has a value");
         isValid = true;
         numValid++;
         noValid = false;
       }
 
       if (numValid > 1) {
-        console.log("");
         isValid = false;
       }
 
@@ -360,30 +358,81 @@
         noValid = true;
       }
 
-console.log(numValid);
-
-
     });
+
     // If you checked a circumstance, show tips/contacts
     if (isValid && numValid < 2) {
-      //$('.circumstancesPanel').slideUp();
-      //$tips.slideDown();
+      $(this).slideUp();
       togglePlusMinus();
-      // $circError.hide();
+
       // window.scrollTo(0, 0);
     } else if (numValid > 1) {
       $fields.each(function(){
         var $this = $(this);
-        console.log($this.val());
         if ($this.val()) {
-          $(this).parent('.columns').addClass('error').find('error').removeClass('hide');
+          $(this).parent('.columns').addClass('error').find('.error').removeClass('hide').end().next('.columns').find('.clear-field').removeClass('hide');
         }
-
+        $('.multiValid').removeClass('hide');
+        $('.noValid').addClass('hide');
       });
 
-      // If you didnt select a checkbox, throw an error
-      // window.scrollTo(0, 120);
-      // $circError.fadeIn(200);
+    // If you didnt select a checkbox, throw an error
+    } else {
+      $fields.each(function(){
+        var $this = $(this);
+        $(this).parent('.columns').addClass('error').find('.error').removeClass('hide');
+        $('.noValid').removeClass('hide');
+        $('.multiValid').addClass('hide');
+      });
+    }
+  });
+
+  $body.on('click', '.clear-field', function(e){
+    e.preventDefault();
+    $(this).parent().parent().prev('.columns').removeClass('error').find('input, select').val('').end().find('.error').addClass('hide');
+    $(this).addClass('hide');
+
+  });
+
+
+  // Clicks to both restart button and panel headings
+  $body.on('click', '.panelTrigger', function(e){
+    e.preventDefault();
+
+    var panelClass = $(this).data('panel'),
+        $panel = $('.' + panelClass);
+
+    // Slide Toggle the panel that this trigger targets
+    $panel.slideToggle();
+
+    // If you clicked to open or close teh circumstances panel
+      // Toggle the pluis minus sign to indicate that its possible
+      togglePlusMinus();
+
+      // Slide Toggle the tips
+      // $tips.slideToggle();
+
+    // If you clicked the Restart Button
+    if (panelClass == 'iamaPanel') {
+
+      $circForm[0].reset();
+      $circError.hide();
+
+      // hide all the tips individually
+      hideTips();
+
+      // If tips is visible, slide toggle it
+      $tips.slideUp();
+
+      // Close the filled "I Am A" Panel
+      $panelSubmitted.slideUp();
+
+      // Close teh Circumstances Panel
+      $('.circumstancesContainer').slideUp();
+
+      // Reset the Plus Minus state of the Circ Panel
+      togglePlusMinus(true);
+
     }
   });
 
