@@ -157,34 +157,33 @@ h6 {
 /* line 17, C:\wamp\www\soms/scss/app.scss */
 .offender-list p {
   margin: 0;
-  border-top: 1px solid #cccccc;
-  border-bottom: 1px solid #999999; }
-/* line 23, C:\wamp\www\soms/scss/app.scss */
+  border-top: 1px solid #cccccc; }
+/* line 22, C:\wamp\www\soms/scss/app.scss */
 .offender-list a {
   display: block;
   padding: 1em 0 1em 0.5em; }
 
-/* line 31, C:\wamp\www\soms/scss/app.scss */
+/* line 30, C:\wamp\www\soms/scss/app.scss */
 dt, dd {
   display: inline-block;
   vertical-align: top; }
 
-/* line 35, C:\wamp\www\soms/scss/app.scss */
+/* line 34, C:\wamp\www\soms/scss/app.scss */
 dt {
   width: 25%;
   padding-right: 1%;
   text-align: right; }
 
-/* line 40, C:\wamp\www\soms/scss/app.scss */
+/* line 39, C:\wamp\www\soms/scss/app.scss */
 dd {
   width: 72%;
   padding-left: 1%; }
 
-/* line 45, C:\wamp\www\soms/scss/app.scss */
+/* line 44, C:\wamp\www\soms/scss/app.scss */
 small.hide {
   display: none; }
 
-/* line 49, C:\wamp\www\soms/scss/app.scss */
+/* line 48, C:\wamp\www\soms/scss/app.scss */
 .help {
   font-size: 0.85em;
   color: #898989; }
