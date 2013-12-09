@@ -17,124 +17,126 @@
     </div>
     <div class="row">
       <div class="columns large-12">
-        <h3 class="panelTrigger searchTrigger plusToggle openPanel" data-panel="search"><i class="fi-plus hide"></i> <i class="fi-minus"></i> Search By: [[Search Criteria]]</h3>
-        <form id="searchForm" class="search" action="#" method="post">
-          <div class="row">
-            <div class="large-3 small-10 columns">
-              <label for="zip">Zip Code</label>
-              <input id="zip" class="zip" type="text">
-              <small class="error hide">Please fill <span class="multiValid hide">only </span><span class="noValid hide">at least </span> one field.</small>
+        <h3 class="panelTrigger searchTrigger plusToggle openPanel" data-panel="search"><i class="fi-plus hide"></i> <i class="fi-minus"></i> Search By: <span class="searchCriteria hide">Last Name: <span class="searchCriteriaValue ">LN</span></span></h3>
+        <div class="search">
+          <form id="searchForm" action="#" method="post">
+            <div class="row">
+              <div class="large-3 small-10 columns">
+                <label for="zip">Zip Code</label>
+                <input id="zip" class="zip" type="text">
+                <small class="error hide">Please fill <span class="multiValid hide">only </span><span class="noValid hide">at least </span> one field.</small>
+              </div>
+              <div class="large-1 small-2 columns">
+                <p class="clear-icon"><a href="#" class="clear-field hide"><i class="fi-x-circle"></i></a></p>
+              </div>
+              <div class="large-8 small-6 columns">
+              </div>
             </div>
-            <div class="large-1 small-2 columns">
-              <p class="clear-icon"><a href="#" class="clear-field hide"><i class="fi-x-circle"></i></a></p>
+            <div class="row">
+              <div class="large-10 small-10 columns">
+                <label for="county">County</label>
+                <select name="county" id="county" class="county">
+                  <option value="" selected="selected"></option>
+                  <option value="1">Albany </option>
+                  <option value="2">Allegany</option>
+                  <option value="3">Bronx</option>
+                  <option value="4">Broome</option>
+                  <option value="5">Cattaraugus</option>
+                  <option value="6">Cayuga</option>
+                  <option value="7">Chautauqua</option>
+                  <option value="8">Chemung</option>
+                  <option value="9">Chenango</option>
+                  <option value="10">Clinton</option>
+                  <option value="11">Columbia</option>
+                  <option value="12">Cortland</option>
+                  <option value="13">Delaware</option>
+                  <option value="14">Dutchess</option>
+                  <option value="15">Erie</option>
+                  <option value="16">Essex</option>
+                  <option value="17">Franklin</option>
+                  <option value="18">Fulton</option>
+                  <option value="19">Genesee</option>
+                  <option value="20">Greene</option>
+                  <option value="21">Hamilton</option>
+                  <option value="22">Herkimer</option>
+                  <option value="23">Jefferson</option>
+                  <option value="24">Kings</option>
+                  <option value="25">Lewis</option>
+                  <option value="26">Livingston</option>
+                  <option value="27">Madison</option>
+                  <option value="28">Monroe</option>
+                  <option value="29">Montgomery</option>
+                  <option value="30">Nassau</option>
+                  <option value="31">New York</option>
+                  <option value="32">Niagara</option>
+                  <option value="33">Oneida</option>
+                  <option value="34">Onondaga</option>
+                  <option value="35">Ontario</option>
+                  <option value="36">Orange</option>
+                  <option value="37">Orleans</option>
+                  <option value="38">Oswego</option>
+                  <option value="39">Otsego</option>
+                  <option value="40">Putnam</option>
+                  <option value="41">Queens</option>
+                  <option value="42">Rensselaer</option>
+                  <option value="43">Richmond</option>
+                  <option value="44">Rockland</option>
+                  <option value="45">Saint Lawrence</option>
+                  <option value="46">Saratoga</option>
+                  <option value="47">Schenectady</option>
+                  <option value="48">Schoharie</option>
+                  <option value="49">Schuyler</option>
+                  <option value="50">Seneca</option>
+                  <option value="51">Steuben</option>
+                  <option value="52">Suffolk</option>
+                  <option value="53">Sullivan</option>
+                  <option value="54">Tioga</option>
+                  <option value="55">Tompkins</option>
+                  <option value="56">Ulster</option>
+                  <option value="57">Warren</option>
+                  <option value="58">Washington</option>
+                  <option value="59">Wayne</option>
+                  <option value="60">Westchester</option>
+                  <option value="61">Wyoming</option>
+                  <option value="62">Yates</option>
+                  <option value="63">Out of State</option>
+                  <option value="99">Unknown</option>
+                  <option value="64">Out of Country</option>
+                </select>
+                <small class="error hide">Please fill <span class="multiValid hide">only </span><span class="noValid hide">at least </span> one field.</small>
+              </div>
+              <div class="large-2 small-2 columns">
+                <p class="clear-icon"><a href="#" class="clear-field hide"><i class="fi-x-circle"></i></a></p>
+              </div>
             </div>
-            <div class="large-8 small-6 columns">
+            <div class="row">
+              <div class="large-10 small-10 columns">
+                <label for="lastName">Last Name</label>
+                <input type="text" name="lastName" class="lastName">
+                <small class="error hide">Please fill <span class="multiValid hide">only </span><span class="noValid hide">at least </span> one field.</small>
+              </div>
+              <div class="large-2 small-2 columns">
+                <p class="clear-icon"><a href="#" class="clear-field hide"><i class="fi-x-circle"></i></a></p>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="large-10 small-10 columns">
-              <label for="county">County</label>
-              <select name="county" id="county" class="county">
-                <option value="" selected="selected"></option>
-                <option value="1">Albany </option>
-                <option value="2">Allegany</option>
-                <option value="3">Bronx</option>
-                <option value="4">Broome</option>
-                <option value="5">Cattaraugus</option>
-                <option value="6">Cayuga</option>
-                <option value="7">Chautauqua</option>
-                <option value="8">Chemung</option>
-                <option value="9">Chenango</option>
-                <option value="10">Clinton</option>
-                <option value="11">Columbia</option>
-                <option value="12">Cortland</option>
-                <option value="13">Delaware</option>
-                <option value="14">Dutchess</option>
-                <option value="15">Erie</option>
-                <option value="16">Essex</option>
-                <option value="17">Franklin</option>
-                <option value="18">Fulton</option>
-                <option value="19">Genesee</option>
-                <option value="20">Greene</option>
-                <option value="21">Hamilton</option>
-                <option value="22">Herkimer</option>
-                <option value="23">Jefferson</option>
-                <option value="24">Kings</option>
-                <option value="25">Lewis</option>
-                <option value="26">Livingston</option>
-                <option value="27">Madison</option>
-                <option value="28">Monroe</option>
-                <option value="29">Montgomery</option>
-                <option value="30">Nassau</option>
-                <option value="31">New York</option>
-                <option value="32">Niagara</option>
-                <option value="33">Oneida</option>
-                <option value="34">Onondaga</option>
-                <option value="35">Ontario</option>
-                <option value="36">Orange</option>
-                <option value="37">Orleans</option>
-                <option value="38">Oswego</option>
-                <option value="39">Otsego</option>
-                <option value="40">Putnam</option>
-                <option value="41">Queens</option>
-                <option value="42">Rensselaer</option>
-                <option value="43">Richmond</option>
-                <option value="44">Rockland</option>
-                <option value="45">Saint Lawrence</option>
-                <option value="46">Saratoga</option>
-                <option value="47">Schenectady</option>
-                <option value="48">Schoharie</option>
-                <option value="49">Schuyler</option>
-                <option value="50">Seneca</option>
-                <option value="51">Steuben</option>
-                <option value="52">Suffolk</option>
-                <option value="53">Sullivan</option>
-                <option value="54">Tioga</option>
-                <option value="55">Tompkins</option>
-                <option value="56">Ulster</option>
-                <option value="57">Warren</option>
-                <option value="58">Washington</option>
-                <option value="59">Wayne</option>
-                <option value="60">Westchester</option>
-                <option value="61">Wyoming</option>
-                <option value="62">Yates</option>
-                <option value="63">Out of State</option>
-                <option value="99">Unknown</option>
-                <option value="64">Out of Country</option>
-              </select>
-              <small class="error hide">Please fill <span class="multiValid hide">only </span><span class="noValid hide">at least </span> one field.</small>
+            <div class="row">
+              <div class="large-4 small-12 columns">
+                <p><button type="submit" class="expand">Search <i class="fi-magnifying-glass"></i></button></p>
+              </div>
             </div>
-            <div class="large-2 small-2 columns">
-              <p class="clear-icon"><a href="#" class="clear-field hide"><i class="fi-x-circle"></i></a></p>
+            <div class="row">
+              <div class="small-12 medium-12 large-12 columns">
+                <p>By clicking "Search" you acknowledge that you have read the disclaimer  below.</p>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="large-10 small-10 columns">
-              <label for="lastName">Last Name</label>
-              <input type="text" name="lastName" class="lastName">
-              <small class="error hide">Please fill <span class="multiValid hide">only </span><span class="noValid hide">at least </span> one field.</small>
+            <div class="row">
+              <div class="small-12 medium-12 large-12 columns">
+                <p><b>The Sex Offender Registry now posts multiple photos of registered sex offenders, as they become available, to provide New Yorkers with additional information to keep their families safe. The Registry also includes multiple names (aliases) and multiple home and/or work addresses in an offender's profile, if applicable.</b></p>
+                <p><b>By law, only information about Level 2 and Level 3 offenders is available via this public directory.</b></p>
+              </div>
             </div>
-            <div class="large-2 small-2 columns">
-              <p class="clear-icon"><a href="#" class="clear-field hide"><i class="fi-x-circle"></i></a></p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="large-4 small-12 columns">
-              <p><button type="submit" class="expand">Search <i class="fi-magnifying-glass"></i></button></p>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-    <div class="row">
-      <div class="small-12 medium-12 large-12 columns">
-        <p>By clicking "Search" you acknowledge that you have read the disclaimer  below.</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="small-12 medium-12 large-12 columns">
-        <p><b>The Sex Offender Registry now posts multiple photos of registered sex offenders, as they become available, to provide New Yorkers with additional information to keep their families safe. The Registry also includes multiple names (aliases) and multiple home and/or work addresses in an offender's profile, if applicable.</b></p>
-        <p><b>By law, only information about Level 2 and Level 3 offenders is available via this public directory.</b></p>
+          </form>
+        </div>
       </div>
     </div>
     <div class="row">
@@ -362,7 +364,7 @@
 
     // If you checked a circumstance, show tips/contacts
     if (isValid && numValid < 2) {
-      $(this).slideUp();
+      $('.search').slideUp();
       togglePlusMinus();
 
       // window.scrollTo(0, 0);
