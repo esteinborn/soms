@@ -20,7 +20,7 @@
         <h3><i class="fi-plus"></i> <i class="fi-minus"></i> Search By: [[Search Criteria]]</h3>
       </div>
       <div class="columns large-12" id="search-form">
-        <form>
+        <form id="searchForm" action="#" method="post">
           <div class="row">
             <div class="large-3 small-10 columns error">
               <label for="zip">Zip Code</label>
@@ -283,11 +283,67 @@
       </div>
     </div>
 
-    <script src="{{assets}}/js/vendor/jquery.js"></script>
-    <script>
-    $.getScript("{{assets}}/js/foundation.js", function(){
-      $(document).foundation();
+<script src="assets/js/vendor/jquery.js"></script>
+<script src="assets/js/foundation.js"></script>
+<script>
+  $(document).foundation();
+
+  var $body = $('body');
+
+  var togglePlusMinus = function(isReset){
+    // If the panel is open, we're closing it so turn the minus into a plus
+    // If we're not resetting the panel to default
+    var isReset = isReset || false;
+    // console.log("isreset: " + isReset);
+    // console.log("Before If statement, isPanel Open: " + isPanelOpen);
+    if (isPanelOpen && !isReset){
+      // console.log("open, closing");
+      $('.plusToggle')
+        .find('.fi-minus').addClass('hide').end()
+        .find('.fi-plus').removeClass('hide');
+        isPanelOpen = false;
+    } else if (!isPanelOpen || isReset) {
+    // console.log("closed, opening");
+    // If the panel is closed, we're opening it so turn the plus into a minus
+    // OR if we're resetting the panel to default
+      $('.plusToggle')
+        .find('.fi-minus').removeClass('hide').end()
+        .find('.fi-plus').addClass('hide');
+        isPanelOpen = true;
+    }
+  };
+
+  $body.on('submit', '#searchForm', function(e){
+    e.preventDefault();
+
+    var $fields = $(this).find("input"),
+        hasChecked = false,
+        isValid = false;
+
+    hideTips();
+
+    $fields.each(function(){
+      var $this = $(this);
+
+      if ($this.val()){
+        isValid = true;
+      }
+
     });
-    </script>
+    // If you checked a circumstance, show tips/contacts
+    if (isValid) {
+      //$('.circumstancesPanel').slideUp();
+      //$tips.slideDown();
+      togglePlusMinus();
+      $circError.hide();
+      window.scrollTo(0, 0);
+    } else {
+      // If you didnt select a checkbox, throw an error
+      window.scrollTo(0, 120);
+      $circError.fadeIn(200);
+    }
+  });
+
+</script>
   </body>
 </html>

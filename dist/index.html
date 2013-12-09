@@ -20,12 +20,12 @@
         <h3><i class="fi-plus"></i> <i class="fi-minus"></i> Search By: [[Search Criteria]]</h3>
       </div>
       <div class="columns large-12" id="search-form">
-        <form>
+        <form id="searchForm" action="#" method="post">
           <div class="row">
-            <div class="large-3 small-10 columns error">
+            <div class="large-3 small-10 columns">
               <label for="zip">Zip Code</label>
-              <input id="zip" type="text">
-              <small class="error">Please only fill one field.</small>
+              <input id="zip" class="zip" type="text">
+              <small class="error hide">Please only fill one field.</small>
             </div>
             <div class="large-1 small-2 columns">
               <p class="clear-icon"><a href="#" class="clear-field"><i class="fi-x-circle"></i></a></p>
@@ -34,9 +34,9 @@
             </div>
           </div>
           <div class="row">
-            <div class="large-10 small-10 columns error">
-              <label>County</label>
-              <select name="County" id="County">
+            <div class="large-10 small-10 columns">
+              <label for="county">County</label>
+              <select name="county" id="county" class="county">
                 <option value="" selected="selected"></option>
                 <option value="1">Albany </option>
                 <option value="2">Allegany</option>
@@ -104,17 +104,17 @@
                 <option value="99">Unknown</option>
                 <option value="64">Out of Country</option>
               </select>
-              <small class="error">Please only fill one field.</small>
+              <small class="error hide">Please only fill one field.</small>
             </div>
             <div class="large-2 small-2 columns">
               <p class="clear-icon"><a href="#" class="clear-field"><i class="fi-x-circle"></i></a></p>
             </div>
           </div>
           <div class="row">
-            <div class="large-10 small-10 columns error">
-              <label>Last Name</label>
-              <input type="text">
-              <small class="error">Please only fill one field.</small>
+            <div class="large-10 small-10 columns">
+              <label for="lastName">Last Name</label>
+              <input type="text" name="lastName" class="lastName">
+              <small class="error hide">Please only fill one field.</small>
             </div>
             <div class="large-2 small-2 columns">
               <p class="clear-icon"><a href="#" class="clear-field"><i class="fi-x-circle"></i></a></p>
@@ -283,11 +283,110 @@
       </div>
     </div>
 
-    <script src="assets/js/vendor/jquery.js"></script>
-    <script>
-    $.getScript("assets/js/foundation.js", function(){
-      $(document).foundation();
+<script src="assets/js/vendor/jquery.js"></script>
+<script src="assets/js/foundation.js"></script>
+<script>
+  $(document).foundation();
+
+  var $body             = $('body'),
+      $circForm         = $('#circumstancesForm');
+      $tipCheckBox      = $circForm.find('input'),
+      $tips             = $('.tipsContainer'),
+      $tipHighUrgency   = $tips.find('.highUrgency'),
+      $tipMediumUrgency = $tips.find('.mediumUrgency'),
+      $tipLowUrgency    = $tips.find('.lowUrgency'),
+      $panelTrigger     = $('.panelTrigger'),
+      $panelContent     = $('.panelContent'),
+      $panelSubmitted   = $('.iamaPanelSubmitted'),
+      $iamaField        = $('.iama'),
+      $respondingField  = $('.responding'),
+      $iamaValue        = $('.iamaValue'),
+      $respondingValue  = $('.respondingValue'),
+      $circError  = $('.circError'),
+      isPanelOpen = true;
+
+
+  var togglePlusMinus = function(isReset){
+    // If the panel is open, we're closing it so turn the minus into a plus
+    // If we're not resetting the panel to default
+    var isReset = isReset || false;
+    // console.log("isreset: " + isReset);
+    // console.log("Before If statement, isPanel Open: " + isPanelOpen);
+    if (isPanelOpen && !isReset){
+      // console.log("open, closing");
+      $('.plusToggle')
+        .find('.fi-minus').addClass('hide').end()
+        .find('.fi-plus').removeClass('hide');
+        isPanelOpen = false;
+    } else if (!isPanelOpen || isReset) {
+    // console.log("closed, opening");
+    // If the panel is closed, we're opening it so turn the plus into a minus
+    // OR if we're resetting the panel to default
+      $('.plusToggle')
+        .find('.fi-minus').removeClass('hide').end()
+        .find('.fi-plus').addClass('hide');
+        isPanelOpen = true;
+    }
+  };
+
+  $body.on('submit', '#searchForm', function(e){
+    e.preventDefault();
+
+    var $fields = $(this).find("input, select"),
+        hasChecked = false,
+        isValid = false,
+        numValid = 0,
+        noValid = true;
+
+    // hideTips();
+
+    $fields.each(function(){
+      var $this = $(this);
+
+      if ($this.val()){
+        console.log("numvalid less than 1 and this has a value");
+        isValid = true;
+        numValid++;
+        noValid = false;
+      }
+
+      if (numValid > 1) {
+        console.log("");
+        isValid = false;
+      }
+
+      if (numValid === 0) {
+        isValid = false;
+        noValid = true;
+      }
+
+console.log(numValid);
+
+
     });
-    </script>
+    // If you checked a circumstance, show tips/contacts
+    if (isValid && numValid < 2) {
+      //$('.circumstancesPanel').slideUp();
+      //$tips.slideDown();
+      togglePlusMinus();
+      // $circError.hide();
+      // window.scrollTo(0, 0);
+    } else if (numValid > 1) {
+      $fields.each(function(){
+        var $this = $(this);
+        console.log($this.val());
+        if ($this.val()) {
+          $(this).parent('.columns').addClass('error').find('error').removeClass('hide');
+        }
+
+      });
+
+      // If you didnt select a checkbox, throw an error
+      // window.scrollTo(0, 120);
+      // $circError.fadeIn(200);
+    }
+  });
+
+</script>
   </body>
 </html>

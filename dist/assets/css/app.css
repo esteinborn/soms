@@ -180,3 +180,7 @@ dt {
 dd {
   width: 72%;
   padding-left: 1%; }
+
+/* line 45, C:\wamp\www\soms/scss/app.scss */
+small.hide {
+  display: none; }
