@@ -183,3 +183,8 @@ dd {
 /* line 45, C:\wamp\www\soms/scss/app.scss */
 small.hide {
   display: none; }
+
+/* line 49, C:\wamp\www\soms/scss/app.scss */
+.help {
+  font-size: 0.85em;
+  color: #898989; }
