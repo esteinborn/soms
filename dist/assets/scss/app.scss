@@ -43,19 +43,24 @@ h6 { font-size: 1rem ;}
 
 }
 
-dt,
-dd {
-  display: inline-block;
-  vertical-align: top;
-}
-dt {
-  width: 25%;
-  padding-right: 1%;
-  text-align: right;
-}
-dd {
-  width: 72%;
-  padding-left: 1%;
+dl {
+  dt,
+  dd {
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 0;
+  }
+
+  dt {
+    width: 25%;
+    padding-right: 1%;
+    text-align: right;
+  }
+
+  dd {
+    width: 72%;
+    padding-left: 1%;
+  }
 }
 
 small.hide {
@@ -67,7 +72,7 @@ small.hide {
   color:#898989;
 }
 
-.photo-container {
+.photoContainer {
   max-width: 250px;
   margin: 0 auto;
 }
@@ -153,8 +158,43 @@ small.hide {
 
 .panelContent {
   overflow: hidden;
-  padding-top: 1em;
+  padding: 1em;
   border: 1px solid #1C6277;
   border-top: 0;
-  margin: 0 -0.5em 2em -0.5em;
+  margin: 0 -0.5em 0 -0.5em;
+}
+
+.addressContainer {
+  dl {
+    padding:0.25em;
+    background: {
+      color: #EEE;
+    }
+
+    &:hover {
+      background: {
+        color: #E3E3E3;
+      }
+    }
+  }
+}
+
+.yesMapAvailable {
+  display: inline;
+
+  .disabled & {
+    display: none;
+  }
+}
+
+.noMapAvailable {
+  display: none;
+
+  .disabled & {
+    display: inline;
+  }
+}
+
+.addlAddressPanel {
+  margin-top:1em;
 }

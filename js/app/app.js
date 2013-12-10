@@ -30,7 +30,7 @@
         .find('.fi-minus').addClass('hide').end()
         .find('.fi-plus').removeClass('hide').end()
         .removeClass('openPanel');
-        
+
     } else if (!isPanelOpen || isReset) {
     // console.log("closed, opening");
     // If the panel is closed, we're opening it so turn the plus into a minus
@@ -81,6 +81,21 @@
       togglePlusMinus('.searchTrigger');
       $('.resultsPanel').slideDown();
 
+      $fields.each(function(){
+        var $this = $(this);
+        if ($this.val()) {
+          $('.searchCriteria').removeClass('hide');
+          $('.searchCategory').text($(this).attr("title"));
+          $('.searchValue').text(function(){
+            if ( $this.hasClass('county') ) {
+              return $this.find('option:selected').text();
+            } else {
+              return $this.val();
+            }
+          });
+        }
+      });
+
       // window.scrollTo(0, 0);
     } else if (numValid > 1) {
       $fields.each(function(){
@@ -115,6 +130,10 @@
     $('.addl-photo-popup').fadeIn(250, function(){
       $('.addl-photo-close').animate({top: "88%"}, 250);
     });
+  });
+
+  $body.on('click', '.disabled', function(e){
+    e.preventDefault();
   });
 
   $body.on('click', '.addl-photo-close', function(e){
@@ -153,6 +172,7 @@
     // If you clicked the Restart Button
     if (panelClass === 'search') {
       $('.resultsPanel').slideUp();
+      $('.searchCriteria').addClass('hide');
     }
 
 

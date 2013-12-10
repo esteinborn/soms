@@ -17,25 +17,25 @@
     </div>
     <div class="row">
       <div class="columns large-12">
-        <h3 class="panelTrigger searchTrigger plusToggle openPanel" data-panel="search"><i class="fi-plus hide"></i> <i class="fi-minus"></i> Search By: <span class="searchCriteria hide">Last Name: <span class="searchCriteriaValue ">LN</span></span></h3>
-        <div class="search">
+        <h3 class="panelTrigger searchTrigger plusToggle openPanel" data-panel="search"><i class="fi-plus hide"></i> <i class="fi-minus"></i> Search by <span class="searchCriteria hide"><span class="searchCategory"></span>: "<span class="searchValue"></span>"</span></h3>
+        <div class="search panelContent">
           <form id="searchForm" action="#" method="post">
             <div class="row">
-              <div class="large-3 small-10 columns">
+              <div class="medium-3 small-10 columns">
                 <label for="zip">Zip Code</label>
-                <input id="zip" class="zip" type="text">
+                <input id="zip" class="zip" type="text" title="zip code">
                 <small class="error hide">Please fill <span class="multiValid hide">only </span><span class="noValid hide">at least </span> one field.</small>
               </div>
-              <div class="large-1 small-2 columns">
+              <div class="medium-1 small-2 columns">
                 <p class="clear-icon"><a href="#" class="clear-field hide"><i class="fi-x-circle"></i></a></p>
               </div>
-              <div class="large-8 small-6 columns">
+              <div class="medium-8 small-6 columns">
               </div>
             </div>
             <div class="row">
               <div class="large-10 small-10 columns">
                 <label for="county">County</label>
-                <select name="county" id="county" class="county">
+                <select name="county" id="county" class="county" title="county">
                   <option value="" selected="selected"></option>
                   <option value="1">Albany </option>
                   <option value="2">Allegany</option>
@@ -112,7 +112,7 @@
             <div class="row">
               <div class="large-10 small-10 columns">
                 <label for="lastName">Last Name</label>
-                <input type="text" name="lastName" class="lastName">
+                <input type="text" name="lastName" class="lastName" title="last name">
                 <small class="error hide">Please fill <span class="multiValid hide">only </span><span class="noValid hide">at least </span> one field.</small>
               </div>
               <div class="large-2 small-2 columns">
@@ -174,7 +174,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="small-12 small-centered columns photo-container">
+        <div class="small-12 small-centered columns photoContainer">
           <div class="offender-photo">
             <img src="assets/img/offender-photo-01.jpg">
             <a href="#" class="addl-photo-link"><i class="fi-plus"></i><br>More</a>
@@ -187,85 +187,93 @@
           <h3>LName, FName, MName</h3>
         </div>
       </div>
-      <div class="row address-container">
+      <div class="row addressContainer">
         <div class="large-12 columns">
           <h3 class="panelTrigger plusToggle openPanel" data-panel="addressPanel"><i class="fi-plus hide"></i> <i class="fi-minus"></i> Current Addresses</h3>
           <div class="addressPanel panelContent">
             <dl class="primary-address">
               <dt>Type</dt>
               <dd>RES</dd>
-              <dt>Address</dt>
-              <dd>
-                <div class="address">
-                  353 THIRD STREET<br>
-                  1ST FLOOR<BR>
-                  Albany, New York 12206
-                </div>
-                <div class="map-link">
-                  <a href="#" class="button expand">View on Map<br><i class="fi-map"></i></a>
-                </div>
-              </dd>
               <dt>County</dt>
               <dd>Albany</dd>
+              <dt>Address</dt>
+              <dd>
+                <div class="row">
+                  <div class="medium-7 columns address">
+                    353 THIRD STREET<br>
+                    1ST FLOOR<BR>
+                    Albany, New York 12206
+                  </div>
+                  <div class="medium-5 columns map-link">
+                    <a href="#" class="button expand"><span class="yesMapAvailable">View on Map</span><span class="noMapAvailable">No Map Available</span><br><i class="fi-map"></i></a>
+                  </div>
+                </div>
+              </dd>
             </dl>
             <dl class="primary-address">
               <dt>Type</dt>
               <dd>EMP</dd>
-              <dt>Address</dt>
-              <dd>
-                <div class="address">
-                  353 THIRD STREET<br>
-                  1ST FLOOR<BR>
-                  Albany, New York 12206
-                </div>
-                <div class="map-link">
-                  <a href="#" class="button disabled expand">View on Map<br><i class="fi-map"></i></a>
-                </div>
-              </dd>
               <dt>County</dt>
               <dd>Albany</dd>
+              <dt>Address</dt>
+              <dd>
+                <div class="row">
+                  <div class="medium-7 columns address">
+                    353 THIRD STREET<br>
+                    1ST FLOOR<BR>
+                    Albany, New York 12206
+                  </div>
+                  <div class="medium-5 columns map-link">
+                    <a href="#" class="button disabled expand"><span class="yesMapAvailable">View on Map</span><span class="noMapAvailable">No Map Available</span><br><i class="fi-map"></i></a>
+                  </div>
+                </div>
+              </dd>
             </dl>
-            <p><a href="#" class="addl-address panelTrigger plusToggle" data-panel="addlAddressPanel"><i class="fi-plus"></i> <i class="fi-minus hide"></i> View Additional Addresses</a></p>
+            <a href="#" class="addl-address panelTrigger" data-panel="addlAddressPanel"><i class="fi-plus"></i> <i class="fi-minus hide"></i> View Additional Addresses</a>
             <div class="addlAddressPanel hide">
               <dl class="non-primary-address">
                 <dt>Type</dt>
                 <dd>RES</dd>
+                <dt>County</dt>
+                <dd>Albany</dd>
                 <dt>Address</dt>
                 <dd>
-                  <div class="address">
+                <div class="row">
+                  <div class="medium-7 columns address">
                     353 THIRD STREET<br>
                     1ST FLOOR<BR>
                     Albany, New York 12206
                   </div>
-                  <div class="map-link">
-                    <a href="#" class="button expand">View on Map<br><i class="fi-map"></i></a>
+                  <div class="medium-5 columns map-link">
+                    <a href="#" class="button expand"><span class="yesMapAvailable">View on Map</span><span class="noMapAvailable">No Map Available</span><br><i class="fi-map"></i></a>
                   </div>
+                </div>
                 </dd>
-                <dt>County</dt>
-                <dd>Albany</dd>
               </dl>
               <dl class="non-primary-address">
                 <dt>Type</dt>
                 <dd>EMP</dd>
+                <dt>County</dt>
+                <dd>Albany</dd>
                 <dt>Address</dt>
                 <dd>
-                  <div class="address">
+                <div class="row">
+                  <div class="medium-7 columns address">
                     353 THIRD STREET<br>
                     1ST FLOOR<BR>
                     Albany, New York 12206
                   </div>
-                  <div class="map-link">
-                    <a href="#" class="button disabled expand">View on Map<br><i class="fi-map"></i></a>
+                  <div class="medium-5 columns map-link">
+                    <a href="#" class="button disabled expand"><span class="yesMapAvailable">View on Map</span><span class="noMapAvailable">No Map Available</span><br><i class="fi-map"></i></a>
                   </div>
+                </div>
                 </dd>
-                <dt>County</dt>
-                <dd>Albany</dd>
               </dl>
             </div>
           </div>
         </div>
       </div>
-      <div class="row appearance-container">
+      <div class="row appearanceContainer">
         <div class="large-12 columns">
           <h3 class="panelTrigger plusToggle" data-panel="appearancePanel"><i class="fi-plus"></i> <i class="fi-minus hide"></i> Appearance</h3>
           <div class="appearancePanel panelContent hide">
@@ -292,7 +300,7 @@
           </div>
         </div>
       </div>
-      <div class="row conviction-container">
+      <div class="row convictionContainer">
         <div class="large-12 columns">
           <h3 class="panelTrigger plusToggle" data-panel="convictionPanel"><i class="fi-plus"></i> <i class="fi-minus hide"></i> Conviction</h3>
           <div class="convictionPanel panelContent hide">
@@ -326,19 +334,19 @@
     </div>
   <div class="addl-photo-popup hide">
     <div class="row">
-      <div class="small-12 small-centered columns photo-container">
+      <div class="small-12 small-centered columns photoContainer">
         <img src="assets/img/offender-photo-01.jpg">
         <p>Date Taken: 01/01/2013</p>
       </div>
-      <div class="small-12 small-centered columns photo-container">
+      <div class="small-12 small-centered columns photoContainer">
         <img src="assets/img/offender-photo-01.jpg">
         <p>Date Taken: 01/01/2013</p>
       </div>
-      <div class="small-12 small-centered columns photo-container">
+      <div class="small-12 small-centered columns photoContainer">
         <img src="assets/img/offender-photo-01.jpg">
         <p>Date Taken: 01/01/2013</p>
       </div>
-      <div class="small-12 small-centered columns photo-container">
+      <div class="small-12 small-centered columns photoContainer">
         <img src="assets/img/offender-photo-01.jpg">
         <p>Date Taken: 01/01/2013</p>
       </div>

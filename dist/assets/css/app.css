@@ -177,40 +177,39 @@ h6 {
   display: block;
   padding: 1em 0 1em 0.5em; }
 
-/* line 47, C:\wamp\www\soms/scss/app.scss */
-dt, dd {
+/* line 48, C:\wamp\www\soms/scss/app.scss */
+dl dt, dl dd {
   display: inline-block;
-  vertical-align: top; }
-
-/* line 51, C:\wamp\www\soms/scss/app.scss */
-dt {
+  vertical-align: top;
+  margin-bottom: 0; }
+/* line 54, C:\wamp\www\soms/scss/app.scss */
+dl dt {
   width: 25%;
   padding-right: 1%;
   text-align: right; }
-
-/* line 56, C:\wamp\www\soms/scss/app.scss */
-dd {
+/* line 60, C:\wamp\www\soms/scss/app.scss */
+dl dd {
   width: 72%;
   padding-left: 1%; }
 
-/* line 61, C:\wamp\www\soms/scss/app.scss */
+/* line 66, C:\wamp\www\soms/scss/app.scss */
 small.hide {
   display: none; }
 
-/* line 65, C:\wamp\www\soms/scss/app.scss */
+/* line 70, C:\wamp\www\soms/scss/app.scss */
 .help {
   font-size: 0.85em;
   color: #898989; }
 
-/* line 70, C:\wamp\www\soms/scss/app.scss */
-.photo-container {
+/* line 75, C:\wamp\www\soms/scss/app.scss */
+.photoContainer {
   max-width: 250px;
   margin: 0 auto; }
 
-/* line 75, C:\wamp\www\soms/scss/app.scss */
+/* line 80, C:\wamp\www\soms/scss/app.scss */
 .offender-photo {
   position: relative; }
-  /* line 78, C:\wamp\www\soms/scss/app.scss */
+  /* line 83, C:\wamp\www\soms/scss/app.scss */
   .offender-photo .addl-photo-link {
     position: absolute;
     color: white;
@@ -220,11 +219,11 @@ small.hide {
     bottom: 0;
     right: 0;
     background-color: rgba(55, 55, 55, 0.2); }
-    /* line 90, C:\wamp\www\soms/scss/app.scss */
+    /* line 95, C:\wamp\www\soms/scss/app.scss */
     .offender-photo .addl-photo-link:hover {
       background-color: rgba(55, 55, 55, 0.5); }
 
-/* line 99, C:\wamp\www\soms/scss/app.scss */
+/* line 104, C:\wamp\www\soms/scss/app.scss */
 .addl-photo-popup {
   position: fixed;
   top: 0;
@@ -235,42 +234,68 @@ small.hide {
   padding-bottom: 20%;
   overflow-y: scroll;
   background-color: white; }
-  /* line 112, C:\wamp\www\soms/scss/app.scss */
+  /* line 117, C:\wamp\www\soms/scss/app.scss */
   .addl-photo-popup .addl-photo-header {
     position: fixed;
     top: 0;
     background-color: white; }
-  /* line 120, C:\wamp\www\soms/scss/app.scss */
+  /* line 125, C:\wamp\www\soms/scss/app.scss */
   .addl-photo-popup .addl-photo-close {
     position: fixed;
     height: 13%;
     top: 100%;
     left: 0;
     background-color: white; }
-    /* line 129, C:\wamp\www\soms/scss/app.scss */
+    /* line 134, C:\wamp\www\soms/scss/app.scss */
     .addl-photo-popup .addl-photo-close p {
       margin: 0;
       padding: 0.5em 0; }
-    /* line 134, C:\wamp\www\soms/scss/app.scss */
+    /* line 139, C:\wamp\www\soms/scss/app.scss */
     .addl-photo-popup .addl-photo-close a {
       margin: 0; }
 
-/* line 140, C:\wamp\www\soms/scss/app.scss */
+/* line 145, C:\wamp\www\soms/scss/app.scss */
 .plusToggle {
   background-color: #1c6277;
   padding: 0.25em 0.5em;
   margin: 0.75em -0.5em 0 -0.5em;
   color: white; }
-  /* line 146, C:\wamp\www\soms/scss/app.scss */
+  /* line 151, C:\wamp\www\soms/scss/app.scss */
   .plusToggle:hover {
     color: white;
     cursor: pointer;
     background-color: #007ba1; }
 
-/* line 154, C:\wamp\www\soms/scss/app.scss */
+/* line 159, C:\wamp\www\soms/scss/app.scss */
 .panelContent {
   overflow: hidden;
-  padding-top: 1em;
+  padding: 1em;
   border: 1px solid #1c6277;
   border-top: 0;
-  margin: 0 -0.5em 2em -0.5em; }
+  margin: 0 -0.5em 0 -0.5em; }
+
+/* line 168, C:\wamp\www\soms/scss/app.scss */
+.addressContainer dl {
+  padding: 0.25em;
+  background-color: #eeeeee; }
+  /* line 174, C:\wamp\www\soms/scss/app.scss */
+  .addressContainer dl:hover {
+    background-color: #e3e3e3; }
+
+/* line 182, C:\wamp\www\soms/scss/app.scss */
+.yesMapAvailable {
+  display: inline; }
+  /* line 185, C:\wamp\www\soms/scss/app.scss */
+  .disabled .yesMapAvailable {
+    display: none; }
+
+/* line 190, C:\wamp\www\soms/scss/app.scss */
+.noMapAvailable {
+  display: none; }
+  /* line 193, C:\wamp\www\soms/scss/app.scss */
+  .disabled .noMapAvailable {
+    display: inline; }
+
+/* line 198, C:\wamp\www\soms/scss/app.scss */
+.addlAddressPanel {
+  margin-top: 1em; }
