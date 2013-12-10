@@ -1,1 +1,200 @@
-var $body=$("body"),$circForm=$("#circumstancesForm"),$tipCheckBox=$circForm.find("input"),$tips=$(".tipsContainer"),$tipHighUrgency=$tips.find(".highUrgency"),$tipMediumUrgency=$tips.find(".mediumUrgency"),$tipLowUrgency=$tips.find(".lowUrgency"),$panelTrigger=$(".panelTrigger"),$panelContent=$(".panelContent"),$panelSubmitted=$(".iamaPanelSubmitted"),$iamaField=$(".iama"),$respondingField=$(".responding"),$iamaValue=$(".iamaValue"),$respondingValue=$(".respondingValue"),$circError=$(".circError"),togglePlusMinus=function(a,b){var c=$(a)||null,d=c.hasClass("openPanel");b=b||!1,d&&!b?c.find(".fi-minus").addClass("hide").end().find(".fi-plus").removeClass("hide").end().removeClass("openPanel"):(!d||b)&&c.find(".fi-minus").removeClass("hide").end().find(".fi-plus").addClass("hide").end().addClass("openPanel")};$body.on("submit","#searchForm",function(a){a.preventDefault();var b=$(this).find("input, select"),c=!1,d=0,e=!0;$(".columns > .error, .clear-field").addClass("hide"),$(".columns.error").removeClass("error"),$(".noValid, .multiValid").removeClass("hide"),b.each(function(){var a=$(this);a.val()&&(c=!0,d++,e=!1),d>1&&(c=!1),0===d&&(c=!1,e=!0)}),c&&2>d?($(".search").slideUp(),togglePlusMinus(".searchTrigger"),$(".resultsPanel").slideDown(),b.each(function(){var a=$(this);a.val()&&($(".searchCriteria").removeClass("hide"),$(".searchCategory").text($(this).attr("title")),$(".searchValue").text(function(){return a.hasClass("county")?a.find("option:selected").text():a.val()}))})):d>1?b.each(function(){var a=$(this);a.val()&&$(this).parent(".columns").addClass("error").find(".error").removeClass("hide").end().next(".columns").find(".clear-field").removeClass("hide"),$(".multiValid").removeClass("hide"),$(".noValid").addClass("hide")}):b.each(function(){$(this);$(this).parent(".columns").addClass("error").find(".error").removeClass("hide"),$(".noValid").removeClass("hide"),$(".multiValid").addClass("hide")})}),$body.on("click",".clear-field",function(a){a.preventDefault(),$(this).parent().parent().prev(".columns").removeClass("error").find("input, select").val("").end().find(".error").addClass("hide"),$(this).addClass("hide")}),$body.on("click",".addl-photo-link",function(a){a.preventDefault(),$(".addl-photo-popup").fadeIn(250,function(){$(".addl-photo-close").animate({top:"88%"},250)})}),$body.on("click",".disabled",function(a){a.preventDefault()}),$body.on("click",".addl-photo-close",function(a){a.preventDefault(),$(".addl-photo-close").animate({top:"100%"},250,function(){$(".addl-photo-popup").fadeOut(250)})}),$body.on("click",".resultsPanel a",function(a){a.preventDefault(),$(".resultsPanel, .searchTrigger").slideUp(),$(".detailsPanel").slideDown()}),$body.on("click",".panelTrigger",function(a){a.preventDefault();var b=$(this),c=b.data("panel"),d=$("."+c);d.slideToggle(),togglePlusMinus(b,!1),"search"===c&&($(".resultsPanel").slideUp(),$(".searchCriteria").addClass("hide")),"iamaPanel"===c&&($circForm[0].reset(),$circError.hide(),hideTips(),$tips.slideUp(),$panelSubmitted.slideUp(),$(".circumstancesContainer").slideUp(),togglePlusMinus(null,!0))});
+  var $body             = $('body'),
+      $circForm         = $('#circumstancesForm'),
+      $tipCheckBox      = $circForm.find('input'),
+      $tips             = $('.tipsContainer'),
+      $tipHighUrgency   = $tips.find('.highUrgency'),
+      $tipMediumUrgency = $tips.find('.mediumUrgency'),
+      $tipLowUrgency    = $tips.find('.lowUrgency'),
+      $panelTrigger     = $('.panelTrigger'),
+      $panelContent     = $('.panelContent'),
+      $panelSubmitted   = $('.iamaPanelSubmitted'),
+      $iamaField        = $('.iama'),
+      $respondingField  = $('.responding'),
+      $iamaValue        = $('.iamaValue'),
+      $respondingValue  = $('.respondingValue'),
+      $circError        = $('.circError');
+
+
+  var togglePlusMinus = function(selector, isReset){
+    // If the panel is open, we're closing it so turn the minus into a plus
+    // If we're not resetting the panel to default
+    var $selector = $(selector) || null,
+        isPanelOpen = $selector.hasClass('openPanel');
+
+    isReset = isReset || false;
+
+
+    if (isPanelOpen && !isReset){
+      // console.log("open, closing");
+      $selector
+        .find('.fi-minus').addClass('hide').end()
+        .find('.fi-plus').removeClass('hide').end()
+        .removeClass('openPanel');
+
+    } else if (!isPanelOpen || isReset) {
+    // console.log("closed, opening");
+    // If the panel is closed, we're opening it so turn the plus into a minus
+    // OR if we're resetting the panel to default
+      $selector
+        .find('.fi-minus').removeClass('hide').end()
+        .find('.fi-plus').addClass('hide').end()
+        .addClass('openPanel');
+    }
+  };
+
+  $body.on('submit', '#searchForm', function(e){
+    e.preventDefault();
+
+    var $fields = $(this).find("input, select"),
+        hasChecked = false,
+        isValid = false,
+        numValid = 0,
+        noValid = true;
+
+    $('.columns > .error, .clear-field').addClass('hide');
+    $('.columns.error').removeClass('error');
+    $('.noValid, .multiValid').removeClass('hide');
+
+    $fields.each(function(){
+      var $this = $(this);
+
+      if ($this.val()){
+        isValid = true;
+        numValid++;
+        noValid = false;
+      }
+
+      if (numValid > 1) {
+        isValid = false;
+      }
+
+      if (numValid === 0) {
+        isValid = false;
+        noValid = true;
+      }
+
+    });
+
+    // If you checked a circumstance, show tips/contacts
+    if (isValid && numValid < 2) {
+      $('.search').slideUp();
+      togglePlusMinus('.searchTrigger');
+      $('.resultsPanel').slideDown();
+
+      $fields.each(function(){
+        var $this = $(this);
+        if ($this.val()) {
+          $('.searchCriteria').removeClass('hide');
+          $('.searchCategory').text($(this).attr("title"));
+          $('.searchValue').text(function(){
+            if ( $this.hasClass('county') ) {
+              return $this.find('option:selected').text();
+            } else {
+              return $this.val();
+            }
+          });
+        }
+      });
+
+      // window.scrollTo(0, 0);
+    } else if (numValid > 1) {
+      $fields.each(function(){
+        var $this = $(this);
+        if ($this.val()) {
+          $(this).parent('.columns').addClass('error').find('.error').removeClass('hide').end().next('.columns').find('.clear-field').removeClass('hide');
+        }
+        $('.multiValid').removeClass('hide');
+        $('.noValid').addClass('hide');
+      });
+
+    // If you didnt select a checkbox, throw an error
+    } else {
+      $fields.each(function(){
+        var $this = $(this);
+        $(this).parent('.columns').addClass('error').find('.error').removeClass('hide');
+        $('.noValid').removeClass('hide');
+        $('.multiValid').addClass('hide');
+      });
+    }
+  });
+
+  $body.on('click', '.clear-field', function(e){
+    e.preventDefault();
+    $(this).parent().parent().prev('.columns').removeClass('error').find('input, select').val('').end().find('.error').addClass('hide');
+    $(this).addClass('hide');
+
+  });
+
+  $body.on('click', '.addl-photo-link', function(e){
+    e.preventDefault();
+    $('.addl-photo-popup').fadeIn(250, function(){
+      $('.addl-photo-close').animate({top: "88%"}, 250);
+    });
+  });
+
+  $body.on('click', '.disabled', function(e){
+    e.preventDefault();
+  });
+
+  $body.on('click', '.addl-photo-close', function(e){
+    e.preventDefault();
+    $('.addl-photo-close').animate({top: "100%"}, 250, function(){
+      $('.addl-photo-popup').fadeOut(250);
+    });
+
+  });
+
+  $body.on('click', '.resultsPanel a', function(e){
+    e.preventDefault();
+    $('.resultsPanel, .searchTrigger').slideUp();
+    $('.detailsPanel').slideDown();
+  });
+
+
+  // Clicks to both restart button and panel headings
+  $body.on('click', '.panelTrigger', function(e){
+    e.preventDefault();
+
+    var $this = $(this),
+        panelClass = $this.data('panel'),
+        $panel = $('.' + panelClass);
+
+    // Slide Toggle the panel that this trigger targets
+    $panel.slideToggle();
+
+    // If you clicked to open or close teh circumstances panel
+      // Toggle the pluis minus sign to indicate that its possible
+    togglePlusMinus($this, false);
+
+      // Slide Toggle the tips
+      // $tips.slideToggle();
+
+    // If you clicked the Restart Button
+    if (panelClass === 'search') {
+      $('.resultsPanel').slideUp();
+      $('.searchCriteria').addClass('hide');
+    }
+
+
+    if (panelClass === 'iamaPanel') {
+
+      $circForm[0].reset();
+      $circError.hide();
+
+      // hide all the tips individually
+      hideTips();
+
+      // If tips is visible, slide toggle it
+      $tips.slideUp();
+
+      // Close the filled "I Am A" Panel
+      $panelSubmitted.slideUp();
+
+      // Close teh Circumstances Panel
+      $('.circumstancesContainer').slideUp();
+
+      // Reset the Plus Minus state of the Circ Panel
+      togglePlusMinus(null, true);
+
+    }
+  });
