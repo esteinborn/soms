@@ -1,7 +1,9 @@
 @import "foundation/components/global";
 
 body {
+  font-size: 16px;
   font-family: Arial, "Helvetica Neue", "Helvetica", Helvetica, sans-serif;
+  padding-bottom: 1em;
 }
 
 h1 { font-size: rem-calc(22) ;}
@@ -26,7 +28,6 @@ h6 { font-size: 1rem ;}
   p {
     margin: 0;
     border-top: 1px solid #CCC;
-    border-bottom: 1px solid #999;
   }
 
   a {
@@ -95,6 +96,7 @@ small.hide {
   height: 100%;
   width: 100%;
   margin: 0;
+  padding-top: 20%;
   padding-bottom: 20%;
   overflow-y: scroll;
   background: {

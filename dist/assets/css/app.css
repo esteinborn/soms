@@ -126,83 +126,91 @@ select {
 
 /* line 3, C:\wamp\www\soms/scss/app.scss */
 body {
-  font-size: 16px;
   font-family: Arial, "Helvetica Neue", "Helvetica", Helvetica, sans-serif;
   padding-bottom: 1em; }
 
 /* line 8, C:\wamp\www\soms/scss/app.scss */
+body {
+  font-family: Arial, "Helvetica Neue", "Helvetica", Helvetica, sans-serif;
+  padding-bottom: 1em; }
+
+/* line 11, C:\wamp\www\soms/scss/app.scss */
+body, html, input, select, option, textarea, button, input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea {
+  font-size: 16px; }
+
+/* line 15, C:\wamp\www\soms/scss/app.scss */
 h1 {
   font-size: 1.375rem; }
 
-/* line 10, C:\wamp\www\soms/scss/app.scss */
+/* line 17, C:\wamp\www\soms/scss/app.scss */
 h2 {
   font-size: 1.25rem; }
 
-/* line 12, C:\wamp\www\soms/scss/app.scss */
+/* line 19, C:\wamp\www\soms/scss/app.scss */
 h3 {
   font-size: 1.1875rem; }
 
-/* line 14, C:\wamp\www\soms/scss/app.scss */
+/* line 21, C:\wamp\www\soms/scss/app.scss */
 h4 {
   font-size: 1.125rem; }
 
-/* line 16, C:\wamp\www\soms/scss/app.scss */
+/* line 23, C:\wamp\www\soms/scss/app.scss */
 h5 {
   font-size: 1.0625rem; }
 
-/* line 18, C:\wamp\www\soms/scss/app.scss */
+/* line 25, C:\wamp\www\soms/scss/app.scss */
 h6 {
   font-size: 1rem; }
 
-/* line 20, C:\wamp\www\soms/scss/app.scss */
+/* line 27, C:\wamp\www\soms/scss/app.scss */
 .clear-icon {
   padding-top: 0.5em;
   font-size: 2em;
   cursor: pointer; }
 
-/* line 27, C:\wamp\www\soms/scss/app.scss */
+/* line 34, C:\wamp\www\soms/scss/app.scss */
 .offender-list p {
   margin: 0;
   border-top: 1px solid #cccccc; }
-/* line 32, C:\wamp\www\soms/scss/app.scss */
+/* line 39, C:\wamp\www\soms/scss/app.scss */
 .offender-list a {
   display: block;
   padding: 1em 0 1em 0.5em; }
 
-/* line 40, C:\wamp\www\soms/scss/app.scss */
+/* line 47, C:\wamp\www\soms/scss/app.scss */
 dt, dd {
   display: inline-block;
   vertical-align: top; }
 
-/* line 44, C:\wamp\www\soms/scss/app.scss */
+/* line 51, C:\wamp\www\soms/scss/app.scss */
 dt {
   width: 25%;
   padding-right: 1%;
   text-align: right; }
 
-/* line 49, C:\wamp\www\soms/scss/app.scss */
+/* line 56, C:\wamp\www\soms/scss/app.scss */
 dd {
   width: 72%;
   padding-left: 1%; }
 
-/* line 54, C:\wamp\www\soms/scss/app.scss */
+/* line 61, C:\wamp\www\soms/scss/app.scss */
 small.hide {
   display: none; }
 
-/* line 58, C:\wamp\www\soms/scss/app.scss */
+/* line 65, C:\wamp\www\soms/scss/app.scss */
 .help {
   font-size: 0.85em;
   color: #898989; }
 
-/* line 63, C:\wamp\www\soms/scss/app.scss */
+/* line 70, C:\wamp\www\soms/scss/app.scss */
 .photo-container {
   max-width: 250px;
   margin: 0 auto; }
 
-/* line 68, C:\wamp\www\soms/scss/app.scss */
+/* line 75, C:\wamp\www\soms/scss/app.scss */
 .offender-photo {
   position: relative; }
-  /* line 71, C:\wamp\www\soms/scss/app.scss */
+  /* line 78, C:\wamp\www\soms/scss/app.scss */
   .offender-photo .addl-photo-link {
     position: absolute;
     color: white;
@@ -212,11 +220,11 @@ small.hide {
     bottom: 0;
     right: 0;
     background-color: rgba(55, 55, 55, 0.2); }
-    /* line 83, C:\wamp\www\soms/scss/app.scss */
+    /* line 90, C:\wamp\www\soms/scss/app.scss */
     .offender-photo .addl-photo-link:hover {
       background-color: rgba(55, 55, 55, 0.5); }
 
-/* line 92, C:\wamp\www\soms/scss/app.scss */
+/* line 99, C:\wamp\www\soms/scss/app.scss */
 .addl-photo-popup {
   position: fixed;
   top: 0;
@@ -227,39 +235,39 @@ small.hide {
   padding-bottom: 20%;
   overflow-y: scroll;
   background-color: white; }
-  /* line 105, C:\wamp\www\soms/scss/app.scss */
+  /* line 112, C:\wamp\www\soms/scss/app.scss */
   .addl-photo-popup .addl-photo-header {
     position: fixed;
     top: 0;
     background-color: white; }
-  /* line 113, C:\wamp\www\soms/scss/app.scss */
+  /* line 120, C:\wamp\www\soms/scss/app.scss */
   .addl-photo-popup .addl-photo-close {
     position: fixed;
     height: 13%;
     top: 100%;
     left: 0;
     background-color: white; }
-    /* line 122, C:\wamp\www\soms/scss/app.scss */
+    /* line 129, C:\wamp\www\soms/scss/app.scss */
     .addl-photo-popup .addl-photo-close p {
       margin: 0;
       padding: 0.5em 0; }
-    /* line 127, C:\wamp\www\soms/scss/app.scss */
+    /* line 134, C:\wamp\www\soms/scss/app.scss */
     .addl-photo-popup .addl-photo-close a {
       margin: 0; }
 
-/* line 133, C:\wamp\www\soms/scss/app.scss */
+/* line 140, C:\wamp\www\soms/scss/app.scss */
 .plusToggle {
   background-color: #1c6277;
   padding: 0.25em 0.5em;
   margin: 0.75em -0.5em 0 -0.5em;
   color: white; }
-  /* line 139, C:\wamp\www\soms/scss/app.scss */
+  /* line 146, C:\wamp\www\soms/scss/app.scss */
   .plusToggle:hover {
     color: white;
     cursor: pointer;
     background-color: #007ba1; }
 
-/* line 147, C:\wamp\www\soms/scss/app.scss */
+/* line 154, C:\wamp\www\soms/scss/app.scss */
 .panelContent {
   overflow: hidden;
   padding-top: 1em;
