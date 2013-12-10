@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
-  var hljs = require('highlight.js');
-  hljs.LANGUAGES['scss'] = require('./lib/scss.js')(hljs);
+
+require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -40,7 +40,21 @@ module.exports = function(grunt) {
         }
       }
     },
-
+    jshint: {
+      options: {
+        curly: true,
+        eqeqeq: true,
+        eqnull: true,
+        browser: true,
+        //'-W083': false, // this stops the Function Within a loop error from the UnoSlider plugin
+        globals: {
+          jQuery: true
+        }
+      },
+      files: [
+        'js/app/*.js'
+      ]
+    },
     uglify: {
       dist: {
         files: {
@@ -73,7 +87,7 @@ module.exports = function(grunt) {
       },
       js: {
         files: ['js/**/*.js'],
-        tasks: ['copy', 'concat', 'uglify'],
+        tasks: ['jshint', 'copy', 'concat', 'uglify'],
         options: {livereload:true}
       }
     },
@@ -81,18 +95,10 @@ module.exports = function(grunt) {
 
   });
 
-  grunt.loadNpmTasks('grunt-sass');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-newer');
-
   grunt.task.renameTask('watch', 'watch_start');
   grunt.task.registerTask('watch', ['watch_start']);
 
-  grunt.registerTask('compile', ['clean', 'sass', 'concat', 'uglify', 'copy']);
+  grunt.registerTask('compile', ['clean', 'sass', 'concat', 'jshint', 'uglify', 'copy']);
   grunt.registerTask('build', ['compile', 'compress']);
   grunt.registerTask('default', ['compile', 'watch']);
 };

@@ -1,5 +1,5 @@
   var $body             = $('body'),
-      $circForm         = $('#circumstancesForm');
+      $circForm         = $('#circumstancesForm'),
       $tipCheckBox      = $circForm.find('input'),
       $tips             = $('.tipsContainer'),
       $tipHighUrgency   = $tips.find('.highUrgency'),
@@ -12,18 +12,16 @@
       $respondingField  = $('.responding'),
       $iamaValue        = $('.iamaValue'),
       $respondingValue  = $('.respondingValue'),
-      $circError  = $('.circError');
+      $circError        = $('.circError');
 
 
   var togglePlusMinus = function(selector, isReset){
     // If the panel is open, we're closing it so turn the minus into a plus
     // If we're not resetting the panel to default
     var $selector = $(selector) || null,
-        isReset = isReset || false,
         isPanelOpen = $selector.hasClass('openPanel');
 
-    console.log(selector);
-    console.log(isPanelOpen);
+    isReset = isReset || false;
 
 
     if (isPanelOpen && !isReset){
@@ -32,6 +30,7 @@
         .find('.fi-minus').addClass('hide').end()
         .find('.fi-plus').removeClass('hide').end()
         .removeClass('openPanel');
+        
     } else if (!isPanelOpen || isReset) {
     // console.log("closed, opening");
     // If the panel is closed, we're opening it so turn the plus into a minus
@@ -152,12 +151,12 @@
       // $tips.slideToggle();
 
     // If you clicked the Restart Button
-    if (panelClass == 'search') {
+    if (panelClass === 'search') {
       $('.resultsPanel').slideUp();
     }
 
 
-    if (panelClass == 'iamaPanel') {
+    if (panelClass === 'iamaPanel') {
 
       $circForm[0].reset();
       $circError.hide();
