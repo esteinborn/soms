@@ -11,7 +11,7 @@ require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
     },
 
     sass: {
-      dist: {
+      dev: {
         options: {
           includePaths: ['scss'],
           sourceComments: 'normal'
@@ -22,13 +22,15 @@ require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
           'dist/assets/css/app.css': 'scss/app.scss'
         }
       },
-      dist_compressed: {
+      dist: {
         options: {
           outputStyle:'compressed',
           includePaths: ['scss']
         },
         files: {
-          'dist/assets/css/foundation.min.css': '<%= foundation.scss %>'
+          'dist/assets/css/foundation.css': '<%= foundation.scss %>',
+          'dist/assets/css/normalize.css': 'scss/normalize.scss',
+          'dist/assets/css/app.css': 'scss/app.scss'
         }
       }
     },
@@ -58,7 +60,7 @@ require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
     uglify: {
       dist: {
         files: {
-          'dist/assets/js/foundation.min.js': ['<%= foundation.js %>'],
+          'dist/assets/js/foundation.min.js': '<%= foundation.js %>',
           'dist/assets/js/app/app.js': 'js/app/app.js'
         }
       }
@@ -68,7 +70,7 @@ require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
       dist: {
         files: [
           {cwd: 'js/', expand:true, filter: 'isFile', src: ['{foundation,vendor,app}/**/*.js'], dest: 'dist/assets/js'},
-          {cwd: 'scss/', expand:true, filter: 'isFile', src: '**/*.scss', dest: 'dist/assets/scss/'},
+          // {cwd: 'scss/', expand:true, filter: 'isFile', src: '**/*.scss', dest: 'dist/assets/scss/'},
           {cwd: 'img/', expand:true, filter: 'isFile', src: '**/*', dest: 'dist/assets/img/'},
           {cwd: 'scss/foundation/components/fonts', expand:true, filter: 'isFile', src: '**/*', dest: 'dist/assets/css/fonts'}
         ]
@@ -81,8 +83,8 @@ require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
     watch_start: {
 
       styles: {
-        files: ['scss/**/*.scss', 'doc/assets/**/*.scss'],
-        tasks: ['sass'],
+        files: ['scss/**/*.scss'],
+        tasks: ['sass:dev'],
         options: {livereload:true}
       },
       js: {
@@ -98,7 +100,7 @@ require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
   grunt.task.renameTask('watch', 'watch_start');
   grunt.task.registerTask('watch', ['watch_start']);
 
-  grunt.registerTask('compile', ['clean', 'sass', 'concat', 'jshint', 'uglify', 'copy']);
-  grunt.registerTask('build', ['compile', 'compress']);
+  grunt.registerTask('compile', ['clean', 'sass:dev', 'concat', 'jshint', 'uglify', 'copy']);
+  grunt.registerTask('build', ['compile', 'sass:dist']);
   grunt.registerTask('default', ['compile', 'watch']);
 };
